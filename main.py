@@ -1424,10 +1424,6 @@ class TicketTypeView(discord.ui.View):
         )
         await interaction.response.send_message(embed=embed, view=view, ephemeral=True)
 
-    @discord.ui.button(label="Website Help", style=discord.ButtonStyle.primary)
-    async def website_help(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await self._send_location_choice(interaction, "Website Help")
-
     @discord.ui.button(label="General Help", style=discord.ButtonStyle.primary)
     async def general_help(self, interaction: discord.Interaction, button: discord.ui.Button):
         await self._send_location_choice(interaction, "General Help")
@@ -1472,12 +1468,11 @@ async def create_ticket(
         "- 2nd Offense - Timeout (1 Day - 1 Week)\n"
         "- 3rd Offense - Timeout Again (Double The Previous)\n"
         "- 4th Offense - Stacking 1 Month Bans\n\n"
-        "Open the ticket type that fits your issue best. Please read the Terms of Service before opening any ticket.\n"
-        "Before opening any ticket, know what you want.\n\n"
-        "**Website Help** – This is for helping with the website or with other stuff according to the website.\n"
+        "Open the ticket type that fits your issue best.\n\n"
         "**General Help** – Get help with general questions or issues.\n"
         "**Report A Player** – Report a player for breaking the rules. You can send links, videos, and photos as evidence.\n"
     )
+
     embed = discord.Embed(
         title="Ticket System",
         description=desc,
@@ -1499,6 +1494,7 @@ async def create_ticket(
         f"Ticket panel created in {target_ch.mention}.",
         ephemeral=True,
     )
+
 
 # ---------------- PURGE GROUP ----------------
 
